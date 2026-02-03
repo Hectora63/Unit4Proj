@@ -25,13 +25,15 @@ public class Main {
 
         for (String line : lines) {
             String[] numbers = line.split(" ");
-            System.out.println(Arrays.toString(numbers));
+            //  System.out.println(Arrays.toString(numbers));
             int[] values = new int[numbers.length];
-
+            Hand yurr = new Hand(values);
             for (int i = 0; i < values.length; i++) {
                 values[i] = Integer.parseInt(numbers[i]);
-                System.out.println(values[i]);
+
+                //System.out.println(values[i]);
             }
-        }
+            System.out.println(Arrays.toString(yurr.getCurrentCards()));
         }
     }
+}
