@@ -16,6 +16,8 @@ public class Main {
             while (s.hasNextLine()) {
                 String line = s.nextLine();
                 fileData += line + "\n";
+
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -23,17 +25,18 @@ public class Main {
 
         String[] lines = fileData.split("\n");
 
-        for (String line : lines) {
-            String[] numbers = line.split(" ");
-            //  System.out.println(Arrays.toString(numbers));
-            int[] values = new int[numbers.length];
-            Hand yurr = new Hand(values);
-            for (int i = 0; i < values.length; i++) {
-                values[i] = Integer.parseInt(numbers[i]);
+       for (int i=0;i<lines.length;i++) {
+           String[] numbers = "/n".split(" ");
+           System.out.println(Arrays.toString(numbers));
+       }
 
-                //System.out.println(values[i]);
-            }
-            System.out.println(Arrays.toString(yurr.getCurrentCards()));
-        }
-    }
+          String[] values = new int[numbers[i].length];
+          Hand yurr = new Hand(values);
+          for (int i = 0; i < values.length; i++) {
+              values[i] = String.join(numbers[i]);
+
+               //System.out.println(values[i]);
+           }
+           System.out.println(Arrays.toString(yurr.getCurrentCards()));
+       }
 }
