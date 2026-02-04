@@ -1,3 +1,6 @@
+
+import java.util.Arrays;
+
 public class Hand {
     // grab values from index  and check which hand
     //along woitb saving

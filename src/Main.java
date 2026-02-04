@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         String fileData = "";
-
         try {
             File f = new File("src/data");
             Scanner s = new Scanner(f);
@@ -16,27 +15,21 @@ public class Main {
             while (s.hasNextLine()) {
                 String line = s.nextLine();
                 fileData += line + "\n";
-
-
             }
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
 
+        //System.out.println(fileData);
         String[] lines = fileData.split("\n");
+String[] numbers=null;
+        for (String line : lines) {
+             numbers = line.split(" "); // numbers[i] is each indivivual thing
+            // ex. [1,2,3] numbers[0] = 1
 
-       for (int i=0;i<lines.length;i++) {
-           String[] numbers = "/n".split(" ");
-           System.out.println(Arrays.toString(numbers));
-       }
 
-          String[] values = new int[numbers[i].length];
-          Hand yurr = new Hand(values);
-          for (int i = 0; i < values.length; i++) {
-              values[i] = String.join(numbers[i]);
+        }
+    }
 
-               //System.out.println(values[i]);
-           }
-           System.out.println(Arrays.toString(yurr.getCurrentCards()));
-       }
 }
