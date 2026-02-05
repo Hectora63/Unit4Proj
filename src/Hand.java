@@ -13,26 +13,35 @@ public class Hand {
 //    int K=13;
 // nt[] allCards={A,2,3,4,5,6,7,8,9,10,J,Q,K};
     String[] currentCards = null;
-int[] checkAmount= new int[4];
+
     public Hand(String[] array) {
         currentCards = array;
     }
 
     public String[] getCurrentCards() {
         //System.out.println(Arrays.toString(currentCards));
-return currentCards;
+        return currentCards;
     }
 
     public void check() {
-        for(int i=0;i<currentCards.length;i++) {
-        try {
-            File f = new File(currentCards[i]);
-            Scanner s = new Scanner(f);
-        }
-       catch (FileNotFoundException e) {
-                System.out.println("File not found");
-            }
+        int[] cardsCheck = {0,0,0,0,0};
+        for (int i = 0; i < currentCards.length; i++) {
+            int count = 0;
+            for(int x=0;x<currentCards.length;x++) {
+                if (currentCards[i].equals(currentCards[x])) {
+                    cardsCheck[i]++;
+                }
+for(int y=0;y<cardsCheck.length;y++){
+    count+= cardsCheck[y];
+}
+    if(count==5){
+        System.out.println("yurr");
+        break;
     }
+            }
+            System.out.println(Arrays.toString(cardsCheck));
+        }
+
     }
 
 

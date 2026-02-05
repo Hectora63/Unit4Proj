@@ -16,24 +16,24 @@ public class Main {
                 String line = s.nextLine();
                 fileData += line + "\n";
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
 
         //System.out.println(fileData);
         String[] lines = fileData.split("\n");
-Hand yurr;
+        Hand yurr;
         for (String line : lines) {
-          String[]numbers = line.split(" "); // numbers[i] is each indivivual thing
+            String[] numbers = line.split(" "); // numbers[i] is each indivivual thing
             // ex. [1,2,3] numbers[0] = 1
-             yurr = new Hand(numbers);
+            yurr = new Hand(numbers);
 
             System.out.println(Arrays.toString(yurr.currentCards));
+            yurr.check();
 
-      //      for(int i=0;i<numbers.length;i++){
-                System.out.println(numbers[0]);
-      //  }
+            //      for(int i=0;i<numbers.length;i++){
+            //  System.out.println(numbers[0]);
+            //  }
 
         }
 
