@@ -23,13 +23,21 @@ public class Main {
 
         //System.out.println(fileData);
         String[] lines = fileData.split("\n");
-String[] numbers=null;
+Hand yurr;
         for (String line : lines) {
-             numbers = line.split(" "); // numbers[i] is each indivivual thing
+          String[]numbers = line.split(" "); // numbers[i] is each indivivual thing
             // ex. [1,2,3] numbers[0] = 1
+             yurr = new Hand(numbers);
 
+            System.out.println(Arrays.toString(yurr.currentCards));
+
+      //      for(int i=0;i<numbers.length;i++){
+                System.out.println(numbers[0]);
+      //  }
 
         }
+
+
     }
 
 }
