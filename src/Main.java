@@ -20,26 +20,23 @@ public class Main {
             System.out.println("File not found");
         }
 
-        //System.out.println(fileData);
+
         String[] lines = fileData.split("\n");
-        Hand yurr = new Hand(lines);
+
+        Hand yurr = new Hand(lines);// named yurr cuz idk
         for (String line : lines) {
             String[] parts = line.split("\\|");
             String[] numbers = parts[0].split(","); // numbers[i] is each indivivual thing
-            int bid=Integer.parseInt(parts[1]);
             // ex. [1,2,3] numbers[0] = 1
 
-            yurr = new Hand(numbers);
+            int bid = Integer.parseInt(parts[1]);
 
-            //System.out.println(Arrays.toString(yurr.currentCards));
+            yurr = new Hand(numbers);//new hand every loop so can use check() on current set of cards
+
             yurr.check();
 
-            //      for(int i=0;i<numbers.length;i++){
-            //  System.out.println(numbers[0]);
-            //  }
-
         }
-        yurr.getHandsAmount();
+        yurr.getHandsAmount(); // pretty formatting
     }
 
 }

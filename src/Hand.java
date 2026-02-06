@@ -1,8 +1,8 @@
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
+
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 public class Hand {
     //brainstorming for pt2
@@ -15,17 +15,14 @@ public class Hand {
 // nt[] allCards={A,2,3,4,5,6,7,8,9,10,J,Q,K};
 
     String[] currentCards = null;
-    static int[] handsAmount = {0, 0, 0, 0, 0, 0, 0};
+    static int[] handsAmount = {0, 0, 0, 0, 0, 0, 0};// static cuz we want to know hom manuy intotal across all hands
 
     public Hand(String[] array) {
         currentCards = array;
     }
 
-    public String[] getCurrentCards() {// kinda useless( maybe delete)
-        //System.out.println(Arrays.toString(currentCards));
-        return currentCards;
-    }
-    public void getHandsAmount(){
+//pretty display
+    public void getHandsAmount() {
         System.out.println("Number of five of a kind hands: " + handsAmount[0]);
         System.out.println("Number of full house hands: " + handsAmount[1]);
         System.out.println("Number of four of a kind hands: " + handsAmount[2]);
@@ -38,7 +35,7 @@ public class Hand {
     }
 
     public void check() { // checks cards based of ma method ( annoying to make)
-        int[] cardsCheck = {0, 0, 0, 0, 0}; // max pos unique cardis 5 ( might have to rework for pt2-3
+        int[] cardsCheck = {0, 0, 0, 0, 0}; // max unique cardis 5 ( might have to rework for to i can record which card is chosen
         boolean[] checked = {false, false, false, false, false}; // record what cards already checkd so no weird dupes
         int[] fiveOfAKind = {5, 0, 0, 0, 0};
         int[] fourOfAKind = {4, 1, 0, 0, 0};
@@ -54,37 +51,36 @@ public class Hand {
             if (checked[i] == false) {
 
                 for (int x = 0; x < currentCards.length; x++) {
-                    if (checked[x] == false && currentCards[i].equals(currentCards[x])) {
+                    if (checked[x] == false && currentCards[i].equals(currentCards[x])) { // if i have not already checked this card check and see how many time appear
                         cardsCheck[i]++;
                         checked[x] = true;
                         totalCount++;
                     }
                 }
             }
-            if (totalCount == 5) {
+            if (totalCount == 5) { //hand size limit is 5
                 break;
             }
         }
         sort(cardsCheck);
-        //System.out.println(Arrays.toString(cardsCheck));
-
-        if (Arrays.equals(cardsCheck,fiveOfAKind)) {
+        // save which type of hand and records
+        if (Arrays.equals(cardsCheck, fiveOfAKind)) {
             handsAmount[0]++;
-        } else if (Arrays.equals(cardsCheck,fourOfAKind)) {
+        } else if (Arrays.equals(cardsCheck, fourOfAKind)) {
             handsAmount[1]++;
-        } else if (Arrays.equals(cardsCheck,fullHouse)) {
+        } else if (Arrays.equals(cardsCheck, fullHouse)) {
             handsAmount[2]++;
-        } else if (Arrays.equals(cardsCheck,threeOfAKind)) {
+        } else if (Arrays.equals(cardsCheck, threeOfAKind)) {
             handsAmount[3]++;
-        } else if (Arrays.equals(cardsCheck,twoPair)) {
+        } else if (Arrays.equals(cardsCheck, twoPair)) {
             handsAmount[4]++;
-        } else if (Arrays.equals(cardsCheck,onePair)){
+        } else if (Arrays.equals(cardsCheck, onePair)) {
             handsAmount[5]++;
-        } else if (Arrays.equals(cardsCheck,highCard)) {
+        } else if (Arrays.equals(cardsCheck, highCard)) {
             handsAmount[6]++;
         }
     }
-
+//sort lists into descending order to check hand easily
     public void sort(int[] arr) { // this lowkey could be useful for pt 2, maybe( problem for later)
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
