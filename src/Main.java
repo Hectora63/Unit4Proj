@@ -22,10 +22,13 @@ public class Main {
 
         //System.out.println(fileData);
         String[] lines = fileData.split("\n");
-        Hand yurr;
+        Hand yurr = new Hand(lines);
         for (String line : lines) {
-            String[] numbers = line.split(" "); // numbers[i] is each indivivual thing
+            String[] parts = line.split("\\|");
+            String[] numbers = parts[0].split(","); // numbers[i] is each indivivual thing
+            int bid=Integer.parseInt(parts[1]);
             // ex. [1,2,3] numbers[0] = 1
+
             yurr = new Hand(numbers);
 
             System.out.println(Arrays.toString(yurr.currentCards));
@@ -36,8 +39,7 @@ public class Main {
             //  }
 
         }
-
-
+        yurr.getHandsAmount();
     }
 
 }
