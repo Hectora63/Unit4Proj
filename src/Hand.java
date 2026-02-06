@@ -26,6 +26,13 @@ public class Hand {
         return currentCards;
     }
     public void getHandsAmount(){
+        System.out.println("Number of five of a kind hands: " + handsAmount[0]);
+        System.out.println("Number of full house hands: " + handsAmount[1]);
+        System.out.println("Number of four of a kind hands: " + handsAmount[2]);
+        System.out.println("Number of three of a kind hands: " + handsAmount[3]);
+        System.out.println("Number of two of a kind hands: " + handsAmount[4]);
+        System.out.println("Number of one pair hands: " + handsAmount[5]);
+        System.out.println("Number of high card hands: " + handsAmount[6]);
         System.out.println(Arrays.toString(handsAmount));
 
     }
@@ -59,7 +66,7 @@ public class Hand {
             }
         }
         sort(cardsCheck);
-        System.out.println(Arrays.toString(cardsCheck));
+        //System.out.println(Arrays.toString(cardsCheck));
 
         if (Arrays.equals(cardsCheck,fiveOfAKind)) {
             handsAmount[0]++;

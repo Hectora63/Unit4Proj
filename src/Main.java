@@ -31,7 +31,7 @@ public class Main {
 
             yurr = new Hand(numbers);
 
-            System.out.println(Arrays.toString(yurr.currentCards));
+            //System.out.println(Arrays.toString(yurr.currentCards));
             yurr.check();
 
             //      for(int i=0;i<numbers.length;i++){
