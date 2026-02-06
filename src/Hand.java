@@ -16,9 +16,11 @@ public class Hand {
 
     String[] currentCards = null;
     static int[] handsAmount = {0, 0, 0, 0, 0, 0, 0};// static cuz we want to know hom manuy intotal across all hands
-
-    public Hand(String[] array) {
+static int[] placement=new int[4];
+int spot;
+    public Hand(String[] array,int spot) {
         currentCards = array;
+        this.spot=spot;
     }
 
 //pretty display
@@ -93,5 +95,13 @@ public class Hand {
         }
     }
 
+public void findPlacement(){
+// idea: change data types
+// sp instead pf cpmparingstrig we to try catch to change all to int
+//then use make new array in check to keep count of which card is in the currentCards
+//then add al numbers up
+//check which is gfreater and such and aseve placement  into int 1st place 2nd etc
+
+}
 
 }
