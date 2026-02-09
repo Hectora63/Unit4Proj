@@ -13,17 +13,19 @@ public class Hand {
 //    int Q=12;
 //    int K=13;
 // nt[] allCards={A,2,3,4,5,6,7,8,9,10,J,Q,K};
+    static int[][] placements = new int[5][2];
 
     String[] currentCards = null;
     static int[] handsAmount = {0, 0, 0, 0, 0, 0, 0};// static cuz we want to know hom manuy intotal across all hands
-static int[] placement=new int[4];
-int spot;
-    public Hand(String[] array,int spot) {
+    static int[] placement = new int[4];
+    int spot;
+
+    public Hand(String[] array, int spot) {
         currentCards = array;
-        this.spot=spot;
+        this.spot = spot;
     }
 
-//pretty display
+    //pretty display
     public void getHandsAmount() {
         System.out.println("Number of five of a kind hands: " + handsAmount[0]);
         System.out.println("Number of full house hands: " + handsAmount[1]);
@@ -36,7 +38,7 @@ int spot;
 
     }
 
-    public void check() { // checks cards based of ma method ( annoying to make)
+    public int check() { // checks cards based of ma method ( annoying to make)
         int[] cardsCheck = {0, 0, 0, 0, 0}; // max unique cardis 5 ( might have to rework for to i can record which card is chosen
         boolean[] checked = {false, false, false, false, false}; // record what cards already checkd so no weird dupes
         int[] fiveOfAKind = {5, 0, 0, 0, 0};
@@ -68,21 +70,30 @@ int spot;
         // save which type of hand and records
         if (Arrays.equals(cardsCheck, fiveOfAKind)) {
             handsAmount[0]++;
+            return 7;
         } else if (Arrays.equals(cardsCheck, fourOfAKind)) {
             handsAmount[1]++;
+            return 6;
         } else if (Arrays.equals(cardsCheck, fullHouse)) {
             handsAmount[2]++;
+            return 5;
         } else if (Arrays.equals(cardsCheck, threeOfAKind)) {
             handsAmount[3]++;
+            return 4;
         } else if (Arrays.equals(cardsCheck, twoPair)) {
             handsAmount[4]++;
+            return 3;
         } else if (Arrays.equals(cardsCheck, onePair)) {
             handsAmount[5]++;
+            return 2;
         } else if (Arrays.equals(cardsCheck, highCard)) {
             handsAmount[6]++;
+            return 1;
         }
+        return 0;
     }
-//sort lists into descending order to check hand easily
+
+    //sort lists into descending order to check hand easily
     public void sort(int[] arr) { // this lowkey could be useful for pt 2, maybe( problem for later)
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
@@ -95,13 +106,15 @@ int spot;
         }
     }
 
-public void findPlacement(){
-// idea: change data types
-// sp instead pf cpmparingstrig we to try catch to change all to int
-//then use make new array in check to keep count of which card is in the currentCards
-//then add al numbers up
-//check which is gfreater and such and aseve placement  into int 1st place 2nd etc
+    public void findPlacement(int strenght) {
+        for(int i=5;i<placement.length;i++) {
+            if (strenght > ) {
 
-}
+            }
+        }
+//save the stregnth and the added values in placement the compare to figure out 1-5 rsnking
+//finds a wau to push down all values below the one that is bigger ( say new > position 2__ push position 3-4 down and delete 5)
+
+    }
 
 }
