@@ -5,19 +5,13 @@ import java.util.Arrays;
 
 
 public class Hand {
-    //brainstorming for pt2
-    // grab values from index  and check which hand
-    //along woitb saving
-//    int A=1;
-//    int J=11;
-//    int Q=12;
-//    int K=13;
-// nt[] allCards={A,2,3,4,5,6,7,8,9,10,J,Q,K};
-    static int[][] placements = new int[5][2];
+// keep variable og current one, check agains all until it is bigger then swap
+    //the smaller one is then compared to the others unto none left then deleetd/ not used
+
 
     String[] currentCards = null;
     static int[] handsAmount = {0, 0, 0, 0, 0, 0, 0};// static cuz we want to know hom manuy intotal across all hands
-    static int[] placement = new int[4];
+    static int[][][] placement = new int[4][2][4];
     int spot;
 
     public Hand(String[] array, int spot) {
@@ -107,8 +101,8 @@ public class Hand {
     }
 
     public void findPlacement(int strenght) {
-        for(int i=5;i<placement.length;i++) {
-            if (strenght > ) {
+        for(int i=0;i<placement.length;i++) {
+            if (strenght > placement[i][1][1]) {
 
             }
         }
@@ -116,5 +110,8 @@ public class Hand {
 //finds a wau to push down all values below the one that is bigger ( say new > position 2__ push position 3-4 down and delete 5)
 
     }
+
+
+    //pt 3 if four of a kind and if there is a j ;== five of a kind
 
 }
