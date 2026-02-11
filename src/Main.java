@@ -18,19 +18,19 @@ public class Main {
             System.out.println("File not found");
         }
 
-
+        int bid=0;
         String[] lines = fileData.split("\n");
-int spot=0;
-        Hand yurr = new Hand(lines,spot);// named yurr cuz idk
+        Hand yurr = new Hand(lines,bid);// named yurr cuz idk
+
         for (String line : lines) {
-            spot++;
+
             String[] parts = line.split("\\|");
             String[] numbers = parts[0].split(","); // numbers[i] is each indivivual thing
             // ex. [1,2,3] numbers[0] = 1
 
-            int bid = Integer.parseInt(parts[1]);
+             bid = Integer.parseInt(parts[1]);
 
-            yurr = new Hand(numbers,spot);//new hand every loop so can use check() on current set of cards
+            yurr = new Hand(numbers,bid);//new hand every loop so can use check() on current set of cards
 
             yurr.check();
 
