@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
         String fileData = "";
+
         try {
             File f = new File("src/data");
             Scanner s = new Scanner(f);
@@ -14,28 +16,61 @@ public class Main {
                 String line = s.nextLine();
                 fileData += line + "\n";
             }
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
 
-        int bid=0;
         String[] lines = fileData.split("\n");
-        Hand yurr = new Hand(lines,bid);// named yurr cuz idk
 
-        for (String line : lines) {
+        // make array size equal to amount of hands
+        Hand[] yurr = new Hand[lines.length];
 
-            String[] parts = line.split("\\|");
-            String[] numbers = parts[0].split(","); // numbers[i] is each indivivual thing
-            // ex. [1,2,3] numbers[0] = 1
+        for (int i = 0; i < lines.length; i++) {
 
-             bid = Integer.parseInt(parts[1]);
+            String[] parts = lines[i].split("\\|");
+            String[] numbers = parts[0].split(","); // numbers[i] is each individual thing
+            int bid = Integer.parseInt(parts[1]);
 
-            yurr = new Hand(numbers,bid);//new hand every loop so can use check() on current set of cards
+            // new hand every loop so can use check() on current set of cards
+            yurr[i] = new Hand(numbers, bid);
 
-            yurr.check();
-
+            yurr[i].check(); // determines strength + ordered cards
         }
-        yurr.getHandsAmount(); // pretty formatting
-    }
 
+        // ---------- RANKING SYSTEM ----------
+
+        int[] ranks = new int[yurr.length];
+
+        for (int i = 0; i < yurr.length; i++) {
+
+            int rank = 1; // weakest = 1
+
+            for (int j = 0; j < yurr.length; j++) {
+
+                if (i != j) {
+
+                    // if another hand stronger increase rank
+                    if (yurr[j].isStrongerThan(yurr[i])) {
+                        rank++;
+                    }
+                }
+            }
+
+            ranks[i] = rank;
+        }
+
+        // ---------- TOTAL WINNINGS ----------
+
+        long total = 0;
+
+        for (int i = 0; i < yurr.length; i++) {
+            total += (long) ranks[i] * yurr[i].getBid();
+        }
+        Hand.displayHandsAmount();
+        System.out.println("Total Winnings: " + total);
+
+
+
+    }
 }
