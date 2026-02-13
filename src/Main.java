@@ -38,7 +38,7 @@ public class Main {
             yurr[i].check(); // determines strength + ordered cards
         }
 
-        // ---------- RANKING SYSTEM ----------
+        // rankings
 
         int[] ranks = new int[yurr.length];
 
@@ -60,7 +60,7 @@ public class Main {
             ranks[i] = rank;
         }
 
-        // ---------- TOTAL WINNINGS ----------
+        //formatting
 
         long total = 0;
 

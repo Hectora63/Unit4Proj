@@ -98,9 +98,10 @@ public class Hand {
             handsAmount[6]++;
         }
 
-        // ---------- ORDER CARDS ----------
+        //order cards
         // most frequent first
-        // ties → higher value first
+        // if ties
+        // higher value first
 
         int index = 0;
 
@@ -138,10 +139,6 @@ public class Hand {
 
         return false;
     }
-
-    // ===================================================
-    // OPTION 2: display method inside Hand class
-    // ===================================================
 
     public static void displayHandsAmount() {
 
