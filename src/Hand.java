@@ -57,43 +57,44 @@ public class Hand {
         int maxCount = 0;
         int secondCount = 0;
 
+
+
         for (int i = 1; i < freq.length; i++) {
 
             if (freq[i] > maxCount) {
                 secondCount = maxCount;
                 maxCount = freq[i];
-            }
-            else if (freq[i] > secondCount) {
+            } else if (freq[i] > secondCount) {
                 secondCount = freq[i];
             }
         }
+         //jacks
+        if(freq[11]>0){
+maxCount+=freq[11];
+        }
+
+
 
         // determine hand type
         if (maxCount == 5) {
             strength = 7;
             handsAmount[0]++;
-        }
-        else if (maxCount == 3 && secondCount == 2) {
+        } else if (maxCount == 3 && secondCount == 2) {
             strength = 5;
             handsAmount[1]++;
-        }
-        else if (maxCount == 4) {
+        } else if (maxCount == 4) {
             strength = 6;
             handsAmount[2]++;
-        }
-        else if (maxCount == 3) {
+        } else if (maxCount == 3) {
             strength = 4;
             handsAmount[3]++;
-        }
-        else if (maxCount == 2 && secondCount == 2) {
+        } else if (maxCount == 2 && secondCount == 2) {
             strength = 3;
             handsAmount[4]++;
-        }
-        else if (maxCount == 2) {
+        } else if (maxCount == 2) {
             strength = 2;
             handsAmount[5]++;
-        }
-        else {
+        } else {
             strength = 1;
             handsAmount[6]++;
         }

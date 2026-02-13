@@ -24,7 +24,7 @@ public class Main {
         String[] lines = fileData.split("\n");
 
         // make array size equal to amount of hands
-        Hand[] yurr = new Hand[lines.length];
+        Hand[] allHands = new Hand[lines.length];
 
         for (int i = 0; i < lines.length; i++) {
 
@@ -33,25 +33,25 @@ public class Main {
             int bid = Integer.parseInt(parts[1]);
 
             // new hand every loop so can use check() on current set of cards
-            yurr[i] = new Hand(numbers, bid);
+            allHands[i] = new Hand(numbers, bid);
 
-            yurr[i].check(); // determines strength + ordered cards
+            allHands[i].check(); // determines strength + ordered cards
         }
 
         // rankings
 
-        int[] ranks = new int[yurr.length];
+        int[] ranks = new int[allHands.length];
 
-        for (int i = 0; i < yurr.length; i++) {
+        for (int i = 0; i < allHands.length; i++) {
 
             int rank = 1; // weakest = 1
 
-            for (int j = 0; j < yurr.length; j++) {
+            for (int j = 0; j < allHands.length; j++) {
 
                 if (i != j) {
 
                     // if another hand stronger increase rank
-                    if (yurr[j].isStrongerThan(yurr[i])) {
+                    if (allHands[j].isStrongerThan(allHands[i])) {
                         rank++;
                     }
                 }
@@ -64,8 +64,8 @@ public class Main {
 
         long total = 0;
 
-        for (int i = 0; i < yurr.length; i++) {
-            total += (long) ranks[i] * yurr[i].getBid();
+        for (int i = 0; i < allHands.length; i++) {
+            total += (long) ranks[i] * allHands[i].getBid();
         }
         Hand.displayHandsAmount();
         System.out.println("Total Winnings: " + total);
